@@ -57,8 +57,6 @@ class InvoiceController extends Controller
             'customer_id' => 'required',
             'product_id' => 'required',
             'qty' => 'required',
-            'service' => 'required',
-            'tax' => 'required',
             'amount' => 'required',
 
 
@@ -75,8 +73,6 @@ class InvoiceController extends Controller
             $sale = new Sales();
             $sale->qty = $request->qty[$key];
             $sale->price = $request->price[$key];
-            $sale->service = $request->service[$key];
-            $sale->tax = $request->tax[$key];
             $sale->amount = $request->amount[$key];
             $sale->product_id = $request->product_id[$key];
             $sale->invoice_id = $invoice->id;
@@ -133,8 +129,6 @@ class InvoiceController extends Controller
             'customer_id' => 'required',
             'product_id' => 'required',
             'qty' => 'required',
-            'service' => 'required',
-            'tax' => 'required',
             'amount' => 'required',
 
 
@@ -147,13 +141,11 @@ class InvoiceController extends Controller
         $invoice->dis = $request->dis;
         $invoice->save();
 
-
+        Sales::where('invoice_id', $id)->delete();
         foreach ( $request->product_id as $key => $product_id){
             $sale = new Sales();
             $sale->qty = $request->qty[$key];
             $sale->price = $request->price[$key];
-            $sale->service = $request->service[$key];
-            $sale->tax = $request->tax[$key];
             $sale->amount = $request->amount[$key];
             $sale->product_id = $request->product_id[$key];
             $sale->invoice_id = $invoice->id;

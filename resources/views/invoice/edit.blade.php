@@ -54,7 +54,7 @@
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label class="control-label">Start Date</label>
+                                        <label class="control-label">Date</label>
                                         <input name="start_date"  class="form-control datepicker"  value="{{ $invoice->start_date}}" type="date" >
                                     </div>
                                 </div>
@@ -76,8 +76,6 @@
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Qty</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Service Charge</th>
-                                    <th scope="col">Tax</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col"><a class="addRow"><i class="fa fa-plus"></i></a></th>
                                 </tr>
@@ -93,8 +91,6 @@
                                         </select></td>
                                     <td><input value="{{$sale->qty}}" type="text" name="qty[]" class="form-control qty" ></td>
                                     <td><input value="{{$sale->price}}" type="text" name="price[]" class="form-control price" ></td>
-                                    <td><input value="{{$sale->service}}" type="text" name="dis[]" class="form-control service" ></td>
-                                    <td><input value="{{$sale->tax}}" type="text" name="dis[]" class="form-control tax" ></td>
                                     <td><input value="{{$sale->amount}}" type="text" name="amount[]" class="form-control amount" ></td>
                                     <td><a   class="btn btn-danger remove"> <i class="fa fa-remove"></i></a></td>
                                 </tr>
@@ -102,31 +98,25 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="table-success"></td>
+                                        <td class="table-success"></td>
                                         <td class="table-success"><b>Sub Total:</b></td>
                                         <td class="table-success"><b class="total"></b></td>
-                                        <td></td>
+                                        <td class="table-success"></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td class="table-success"><b>Discount:</b></td>
                                         <td class="table-success"><input name="dis"  class="form-control"  value="{{ $invoice->dis }}" type="text" ></b></td>
-                                        <td></td>
+                                        <td class="table-success"></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="table-success"></td>
+                                        <td class="table-success"></td>
                                         <td class="table-success"><b>Total:</b></td>
                                         <td class="table-success"><b class="total"></b></td>
-                                        <td></td>
+                                        <td class="table-success"></td>
                                     </tr>
                                 </tfoot>
 
@@ -192,12 +182,7 @@
                 var tr = $(this).parent().parent();
                 var qty = tr.find('.qty').val();
                 var price = tr.find('.price').val();
-                var service = tr.find('.service').val();
-                var tax = tr.find('.tax').val();
-                var value = qty * price;
-                var service = (value * service)/100;
-                var tax = (value + service) * tax/100;
-                var amount = (value + service + tax);
+                var amount = (qty * price);
                 tr.find('.amount').val(amount);
                 total();
             });
@@ -209,14 +194,7 @@
                 })
                 $('.total').html(total);
             }
-            function dis(){
-               var dis = 0;
-               $('.dis').each(function (i,e) {
-                    var dis =$(this).val()-0;
-                    dis -= amount;
-                })
-                $('.dis').html(dis);
-            }
+
 
             $('.addRow').on('click', function () {
                 addRow();
@@ -235,8 +213,6 @@
                     '               </select></td>\n' +
 '                                <td><input type="text" name="qty[]" class="form-control qty" ></td>\n' +
 '                                <td><input type="text" name="price[]" class="form-control price" ></td>\n' +
-'                                <td><input type="text" name="service[]" class="form-control service" ></td>\n' +
-'                                <td><input type="text" name="tax[]" class="form-control tax" ></td>\n' +
 '                                <td><input type="text" name="amount[]" class="form-control amount" ></td>\n' +
 '                                <td><a   class="btn btn-danger remove"> <i class="fa fa-remove"></i></a></td>\n' +
 '                             </tr>';

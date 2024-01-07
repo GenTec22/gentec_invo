@@ -58,8 +58,6 @@
                                         <th>Product</th>
                                         <th>Qty</th>
                                         <th>Price</th>
-                                        <th>Discount</th>
-                                        <th>tax</th>
                                         <th>Amount</th>
                                      </tr>
                                     </thead>
@@ -72,8 +70,6 @@
                                         <td>{{$sale->product->name}}</td>
                                         <td>{{$sale->qty}}</td>
                                         <td>{{$sale->price}}</td>
-                                        <td>{{$sale->service }}</td>
-                                        <td>{{$sale->tax}}</td>
                                         <td>{{$sale->amount}}</td>
                                         <div style="display: none">
                                             {{$total +=$sale->amount}}
@@ -85,15 +81,11 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
                                             <td><b>Discount:</b></td>
                                             <td><b>{{$invoice->dis}}</b></td>
 
                                         </tr>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td><b>Total</b></td>
@@ -104,15 +96,13 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
                                     </tr>
                                     </tfoot>
                                 </table>
                             </div>
                         </div>
                         <div class="col-6">
-                            <h2 class="page-header"><i class=""><img width="400 px" class="app-sidebar__user-avatar" src="{{ URL::to('/assets/images/user/sign.png') }}" > </i> </h2>
+                            <h2 class="page-header"><i class=""><img width="400 px" class="app-sidebar__user-avatar" src="{{ URL::to('/assets/images/user/signeture.png') }}" > </i> </h2>
                         </div>
                         <div class="row d-print-none mt-2">
                             <div class="col-12 text-right"><a class="btn btn-primary" href="javascript:void(0);" onclick="printInvoice();"><i class="fa fa-print"></i> Print</a></div>

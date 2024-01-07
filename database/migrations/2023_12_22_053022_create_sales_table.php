@@ -17,8 +17,6 @@ return new class extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->integer('qty');
             $table->integer('price');
-            $table->integer('service')->nullable();
-            $table->integer('tax')->nullable();
             $table->integer('amount');
             $table->foreign('invoice_id')
                 ->references('id')->on('invoices')

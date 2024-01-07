@@ -85,8 +85,6 @@
                                         <th scope="col">Product</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Price</th>
-                                        <th scope="col">Discount</th>
-                                        <th scope="col">Tax</th>
                                         <th scope="col">Amount</th>
                                         <th scope="col"><a class="addRow badge badge-success text-white"><i class="fa fa-plus"></i> Add Row</a></th>
                                     </tr>
@@ -101,16 +99,13 @@
                                             </select></td>
                                         <td><input type="text" name="qty[]" class="form-control qty" ></td>
                                         <td><input type="text" name="price[]" class="form-control price" ></td>
-                                        <td><input type="text" name="service[]" class="form-control service" ></td>
-                                        <td><input type="text" name="tax[]" class="form-control tax" ></td>
                                         <td><input type="text" name="amount[]" class="form-control amount" ></td>
                                         <td><a   class="btn btn-danger remove"> <i class="fa fa-remove"></i></a></td>
                                      </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+
                                         <td></td>
                                         <td></td>
                                         <td class="table-success"><b>Sub Total:</b></td>
@@ -118,8 +113,7 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+
                                         <td></td>
                                         <td></td>
                                         <td class="table-success"><b>Discount:</b></td>
@@ -295,17 +289,12 @@
                         });
                     });
 
-                    $('tbody').delegate('.qty,.price,.service,.tax ', 'keyup', function () {
+                    $('tbody').delegate('.qty,.price ', 'keyup', function () {
 
                         var tr = $(this).parent().parent();
                         var qty = tr.find('.qty').val();
                         var price = tr.find('.price').val();
-                        var service = tr.find('.service').val();
-                        var tax = tr.find('.tax').val();
-                        var value = qty * price;
-                        var service = (value - service);
-                        var tax = (service * tax)/100;
-                        var amount = (service + tax);
+                        var amount = (qty * price);
                         tr.find('.amount').val(amount);
                         total();
                     });
