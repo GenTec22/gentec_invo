@@ -29,6 +29,7 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
+                                <th>SL.NO. </th>
                                 <th>Product </th>
                                 <th>Code </th>
                                 <th>Price</th>
@@ -36,9 +37,11 @@
                             </tr>
                             </thead>
                              <tbody>
-
+                                <?php $i = 0?>
                              @foreach($product as $prod)
+                             <?php $i++?>
                                  <tr>
+                                     <td>{{$i}}</td>
                                      <td>{{$prod->name}}</td>
                                      <td>{{$prod->code}}</td>
                                      <td>{{$prod->price}}</td>

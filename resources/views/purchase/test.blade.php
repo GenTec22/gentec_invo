@@ -1,1 +1,101 @@
-test blade
+
+
+@extends('layouts.master')
+
+@section('titel', 'api Fatch | ')
+@section('content')
+    @include('partials.header')
+    @include('partials.sidebar')
+
+    <main class="app-content">
+        <div class="app-title">
+            <div>
+                <h1><i class="fa fa-th-list"></i> Api  Table</h1>
+            </div>
+            <ul class="app-breadcrumb breadcrumb side">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item">Api</li>
+                <li class="breadcrumb-item active"><a href="#">Api Table</a></li>
+            </ul>
+        </div>
+        <div class="">
+            <a class="btn btn-primary" href="{{route('purchase.create')}}"><i class="fa fa-plus"></i> Add api</a>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="tile">
+                    <div class="tile-body">
+                        <table class="table table-hover table-bordered" id="sampleTable">
+                            <thead>
+                            <tr>
+                                <th>Id </th>
+                                <th>User Id </th>
+                                <th>title</th>
+                                <th>body</th>
+
+                            </tr>
+                            </thead>
+                             <tbody>
+
+                             @foreach($data as $post)
+                                 <tr>
+                                     <td>{{$post->id}}</td>
+                                     <td>{{$post->userId}}</td>
+                                     <td>{{$post->title}}</td>
+                                     <td>{{$post->body}}</td>
+
+                                         </form>
+
+                                 </tr>
+                             @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+@endsection
+
+@push('js')
+    <script type="text/javascript" src="{{asset('/')}}js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{{asset('/')}}js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
+    <script type="text/javascript">
+        function deleteTag(id) {
+            swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    event.preventDefault();
+                    document.getElementById('delete-form-'+id).submit();
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    swal(
+                        'Cancelled',
+                        'Your data is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
+@endpush

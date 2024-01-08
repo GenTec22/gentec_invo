@@ -29,6 +29,7 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
+                                <th>SL.NO. </th>
                                 <th>Name </th>
                                 <th>Particular </th>
                                 <th>Qty</th>
@@ -37,9 +38,11 @@
                             </tr>
                             </thead>
                              <tbody>
-
+                                <?php $i = 0?>
                              @foreach($incomes as $income)
+                             <?php $i++?>
                                  <tr>
+                                     <td>{{$i}}</td>
                                      <td>{{$income->name}}</td>
                                      <td>{{$income->particular}}</td>
                                      <td>{{$income->qty}}</td>

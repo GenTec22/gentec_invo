@@ -29,6 +29,7 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
+                                <th>SL.NO.</th>
                                 <th>Project Name </th>
                                 <th>Mobile </th>
                                 <th>Email </th>
@@ -42,9 +43,11 @@
                             </tr>
                             </thead>
                              <tbody>
-
+                                <?php $i = 0?>
                              @foreach($projectlist as $project)
+                             <?php $i++ ?>
                                  <tr>
+                                     <td>{{$i}}</td>
                                      <td>{{$project->name}}</td>
                                      <td>{{$project->mobile}}</td>
                                      <td>{{$project->email}}</td>

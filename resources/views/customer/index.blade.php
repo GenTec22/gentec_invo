@@ -29,6 +29,7 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
+                                <th>SL.NO. </th>
                                 <th>Customer </th>
                                 <th>Address </th>
                                 <th>Contact</th>
@@ -37,8 +38,11 @@
                             </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 0?>
                             @foreach( $customers as $customer)
+                            <?php $i++ ?>
                             <tr>
+                                <td>{{ $i }} </td>
                                 <td>{{ $customer->name }} </td>
                                 <td>{{ $customer->address }} </td>
                                 <td>{{ $customer->mobile }} </td>

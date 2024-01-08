@@ -29,6 +29,7 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
+                                <th>SL.NO.</th>
                                 <th>Purchase Item Name </th>
                                 <th>Supplier Name </th>
                                 <th>Particular </th>
@@ -38,9 +39,11 @@
                             </tr>
                             </thead>
                              <tbody>
-
+                                <?php $i = 0?>
                              @foreach($purchaselist as $purchase)
+                             <?php $i++?>
                                  <tr>
+                                     <td>{{$i}}</td>
                                      <td>{{$purchase->name}}</td>
                                      <td>{{$purchase->suppliername}}</td>
                                      <td>{{$purchase->particular}}</td>

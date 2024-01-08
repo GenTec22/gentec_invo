@@ -94,3 +94,7 @@ Route::POST('/purchaseitem/getitem', [PurchaseController::class,'storeitem'])->n
 
 
 Route::GET('/test/gettest', [PurchaseController::class,'gettest'])->name('test.gettest');
+Route::GET('/test/getData', [PurchaseController::class,'getData'])->name('test.getData');
+
+
+

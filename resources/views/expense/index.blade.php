@@ -29,6 +29,7 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
+                                <th>SL.NO.</th>
                                 <th>Name </th>
                                 <th>Particular </th>
                                 <th>Qty</th>
@@ -37,9 +38,11 @@
                             </tr>
                             </thead>
                              <tbody>
-
+                                <?php $i = 0?>
                              @foreach($expenses as $expense)
+                             <?php $i++?>
                                  <tr>
+                                     <td>{{$i}}</td>
                                      <td>{{$expense->name}}</td>
                                      <td>{{$expense->particular}}</td>
                                      <td>{{$expense->qty}}</td>

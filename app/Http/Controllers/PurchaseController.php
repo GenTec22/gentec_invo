@@ -6,6 +6,7 @@ use App\Models\Purchase;
 use App\Models\PurchaseItem;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PurchaseController extends Controller
 {
@@ -114,4 +115,52 @@ return redirect()->back()->with('message', 'Purchase update successfully');
 
         return view('purchase.test');
     }
+
+
+    public function getData()
+{
+
+
+        $response = Http::get('https://jsonplaceholder.typicode.com/posts');
+
+
+            $data = $response->json();
+            // $data = (array)$data;
+
+
+            return response()->json($data);
+            // return view('purchase.test', compact('data'));
+    //   print_r($data);
+
+}
+// public function fetchDataFromApi()
+// {
+
+        // $response = Http::get('https://api.example.com/data');
+        // $data = $response->json();
+
+        // return response()->json($data);
+        // return view('purchase.test', compact('response'));
+        // print_r($data);
+        // die;
+
+        // foreach ($data as $post) {
+        //    $post = (array)$post;
+
+        //    Post::updateOrCreate(
+
+        //     ['id' => $post['id']],
+        //     [
+        //         'id'=>$post['id'],
+        //         'userId'=>$post['userId'],
+        //         'title'=>$post['title'],
+        //         'body'=>$post['body'],
+        //     ],
+        //    );
+        // }
+
+
+// }
+
+
 }

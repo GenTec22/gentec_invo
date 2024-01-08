@@ -29,6 +29,7 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
+                                <th>SL.NO. </th>
                                 <th>Product </th>
                                 <th>Qty </th>
                                 <th>Price</th>
@@ -37,14 +38,17 @@
                             </tr>
                             </thead>
                             <tbody>
+                    <?php $i = 0?>
             @foreach($sales as $sale)
+            <?php $i++?>
                 <tr>
+                    <td>{{ $i}}</td>
                     <td>{{ $sale->product->name }}</td>
                     <td>{{ $sale->qty }}</td>
                     <td>{{ $sale->price }}</td>
                     <td>{{ $sale->amount }}</td>
                     <td>{{ $sale->created_at }}</td>
-                    
+
                 </tr>
             @endforeach
         </tbody>
@@ -64,5 +68,5 @@
     <script type="text/javascript" src="{{asset('/')}}js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
-    
+
 @endpush
