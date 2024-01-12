@@ -5,24 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class ServiceBill extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'mobile',
+        'date',
+        'ref',
+        'project_id',
         'address',
         'unit',
-        'floor',
+        'agreement',
+        'bill_month',
         's_charge',
-        'agreement_date',
-        'email',
-        'details',
         'status',
-
     ];
 
-    public function servicebill(){
-        return $this->belongsToMany(ServiceBill::class);
+    public function project(){
+        return $this->belongsTo(Project::class, 'project_id');
+
     }
 }

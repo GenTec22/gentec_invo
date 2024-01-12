@@ -10,6 +10,6 @@ class Invoice extends Model
     use HasFactory;
 
     public function customer(){
-        return $this->belongsTo('App\Models\Customer');
+        return $this->belongsTo(Customer::class);
     }
 }
